@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o%9g$vgl=rsb82x6_m6t4b-v%130wh6^uhi$mtp)qv_qw1(h#u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '0.0.0.0', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -80,8 +80,8 @@ DATABASES = {
         'NAME': 'task_db',
         'USER': 'task_user',
         'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '54321'
+        'HOST': 'db',
+        'PORT': '5432'
 
         
     }
