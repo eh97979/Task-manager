@@ -1,0 +1,54 @@
+<!doctype html>
+{% load static %}
+<html>
+	<head>
+            <link rel='stylesheet' type='text/css' href='{% static 'task/style.css' %}'>
+	  <meta charset="utf-8" />
+	  <title>Task Manager</title>
+	</head>
+	<body>
+            <div class='main_div'>
+                    <div class=logo_div>
+                    <img src='{% static 'images/plus.png' %}' alt='LOGO' class='logo'>
+                    </div>
+                <h1> Task Manager </h1>
+           <div class='main_button_div'>
+                <form action='{% url 'task:addtask' %}' method='post'>
+                {% csrf_token %}
+                    <label for='addtask'>Add Task:</label>
+                    <input type='text' id='addtask' name=addtask>
+                    <input type='submit' value='Add'>
+                </form>
+                           
+                <form action='{% url 'task:rm_task' %}' method='post'>
+                        {% csrf_token %}
+                        <input type='submit' value='Remove all'>
+                </form>
+            </div>
+            </div>
+            
+            
+            <div class='line'></div>
+            
+            
+            <h2>Tasks</h2>
+            
+            {% if task %}
+            <div class='task_div'>
+                {% for t in task %}
+                <div class='task_list_div'>
+                <form action='{% url 'task:rm' t.pk %}'>
+                    <button type='submit' class='del_button'>
+                            <img src='{% static 'images/del.jpg' %}'>
+                    </button>
+                    <p class='task_text_list'>{{ t.task_text }} </p>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% else %}
+            <p class='no_task'>You dont have task. Add the task</p>
+            {% endif %}
+
+	</body>
+</html>
