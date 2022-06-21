@@ -75,9 +75,21 @@ h2{text-align:center;
 
 .task_list_div p{ margin:0; 
                   padding-top:15px;
+                  font-size:20px;
 }
 
 .no_task{ text-align:center;
           font-size:20px;
 
+}
+
+.task_text_list_done{color:grey;                        
+        text-decoration:line-through;
+        font-size:20px;
+}
+
+
+.invis_block{width:57px;
+            height:46px;            
+            float:left;
 }

@@ -18,8 +18,9 @@ class TasksView(generic.ListView):
     model = Tasks
     template_name = 'task/index.html'
     context_object_name = 'task'
-    def get_queryset(self):
-        return Tasks.objects.filter(its_done=False)
+    ordering = ['pk']
+    # def get_queryset(self):
+    #     return Tasks.objects.filter(its_done=False)
 
 
 def add_task(request):
@@ -40,4 +41,12 @@ def remove_1_task(request, task_pk):
     remove_task = get_object_or_404(Tasks, pk=task_pk)
     remove_task.delete()
     return HttpResponseRedirect(reverse('task:index'))
+
+
+def done_task(request, task_pk):
+    task_chosen = get_object_or_404(Tasks, pk=task_pk)
+    task_chosen.its_done=True
+    task_chosen.save()
+    return HttpResponseRedirect(reverse('task:index'))
+
 
